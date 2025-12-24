@@ -67,12 +67,14 @@
         nav {
             position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             width: 100%;
             background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(10px);
             padding: 1.5rem 5%;
             z-index: 1000;
-            transition: transform 0.3s;
+            transition: all 0.3s ease;
         }
 
         nav.hidden {
@@ -94,6 +96,9 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            cursor: pointer;
+            user-select: none;
+            white-space: nowrap;
         }
 
         .nav-links {
@@ -562,13 +567,10 @@
             }
 
             .shape1 {
-                width: 200px;
-                height: 200px;
-            }
-
-            .shape1 {
-                width: 150px;
-                height: 150px;
+                width: 250px;
+                height: 250px;
+                left: 50%;
+                transform: translateX(-50%);
             }
 
             .shape2 {
@@ -613,6 +615,10 @@
 
         /* Small Mobile Styles */
         @media (max-width: 480px) {
+            nav {
+                padding: 1rem 4%;
+            }
+
             .hero h1 {
                 font-size: 2rem;
             }
@@ -636,7 +642,7 @@
             }
 
             .nav-links {
-                width: 85%;
+                width: 90%;
             }
 
             .nav-links a {
@@ -648,8 +654,24 @@
             }
 
             .shape1 {
-                width: 150px;
-                height: 150px;
+                width: 200px;
+                height: 200px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .shape2 {
+                width: 80px;
+                height: 80px;
+                bottom: 50%;
+                right: 5%;
+            }
+
+            .shape3 {
+                width: 60px;
+                height: 60px;
+                top: 75%;
+                left: 5%;
             }
 
             .about-text h2,
@@ -670,16 +692,60 @@
                 height: 35px;
                 font-size: 1rem;
             }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 0.8rem;
+            }
         }
 
         /* Landscape Mobile */
         @media (max-width: 768px) and (orientation: landscape) {
+            nav {
+                padding: 1rem 5%;
+            }
+
             .hero {
                 min-height: auto;
+                padding: 1rem 0;
             }
 
             .floating-shapes {
-                height: 250px;
+                height: 200px;
+            }
+
+            .shape1 {
+                width: 180px;
+                height: 180px;
+            }
+
+            .page {
+                padding: 70px 5% 30px;
+            }
+        }
+
+        /* Extra Small Devices */
+        @media (max-width: 360px) {
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+            }
+
+            .shape1 {
+                width: 180px;
+                height: 180px;
+            }
+
+            .btn {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -955,13 +1021,4 @@
             
             shapes.forEach((shape, index) => {
                 const speed = (index + 1) * 20;
-                shape.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
-            });
-        });
-    </script>
-</body>
-</html>
-
-
-
-
+                shape.style.transform = `translate(${x * speed}px, ${y * speed}px)
